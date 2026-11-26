@@ -1124,7 +1124,14 @@ async function renderStart(view, aid) {
     view.innerHTML = `<div class="card">This assessment is not available. <a href="#assess">Back</a></div>`;
     return;
   }
-  at = await getDoc(ref("attempts", attemptId(sid, aid))).then((d) => d.exists() ? d.data() : null).catch(() => null);
+  try {
+    const d = await getDoc(ref("attempts", attemptId(sid, aid)));
+    at = d.exists() ? d.data() : null;
+  } catch (e) {
+    console.error(e);
+    view.innerHTML = `<div class="card err-card">Could not check your attempt (${esc(e.code || e.message)}). Please tell your teacher.</div>`;
+    return;
+  }
   if (at?.status === "submitted") {
     state.examLock = null;
     location.hash = "assess";
@@ -1171,7 +1178,10 @@ async function renderStart(view, aid) {
       console.error(e);
       if (document.fullscreenElement) document.exitFullscreen().catch(() => {
       });
-      toast(e?.code === "permission-denied" ? "The test is not open for you. Ask your teacher." : "Could not start: " + (e.message || e), "err");
+      const step = e?.step || "start";
+      modal(`<h3>The test could not start</h3>
+        <p>Step: <b>${esc(step)}</b> \xB7 code: <b>${esc(e?.code || e?.message || "error")}</b></p>
+        <p class="muted">${e?.code === "permission-denied" ? "The database refused this action. Teacher: publish the latest firestore.rules (Firebase Console \u2192 Firestore \u2192 Rules \u2192 Publish), wait one minute and try again." : "Check the internet connection and try again."}</p>`);
       $("#goBtn").disabled = false;
     }
     await fs2;
@@ -1181,6 +1191,10 @@ async function startExam(A, prev) {
   const sid = state.student.id;
   const r = ref("attempts", attemptId(sid, A.id));
   const t0 = Date.now();
+  const tag = (step) => (e) => {
+    e.step = step;
+    throw e;
+  };
   if (!prev) {
     await setDoc(r, {
       studentId: sid,
@@ -1192,16 +1206,16 @@ async function startExam(A, prev) {
       startedAt: serverTimestamp(),
       updatedAt: serverTimestamp(),
       lastSeen: serverTimestamp()
-    });
+    }).catch(tag("create attempt"));
   } else {
     await updateDoc(r, {
       lastSeen: serverTimestamp(),
       violations: increment(1),
       events: arrayUnion({ t: t0, type: "reopened", info: "The test page was closed or reloaded, then opened again", counted: true })
-    });
+    }).catch(tag("resume attempt"));
   }
   const t1 = Date.now();
-  const snap = await getDoc(r);
+  const snap = await getDoc(r).catch(tag("read attempt"));
   const at = snap.data();
   const skew = ms(at.lastSeen) - (t0 + t1) / 2;
   runExam(A, at, r, skew);
