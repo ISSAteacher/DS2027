@@ -1004,7 +1004,7 @@ function blocks(list = []) {
     if (b.t === "p") return `<p>${rich(b.x)}</p>`;
     if (b.t === "h") return `<h4>${rich(b.x)}</h4>`;
     if (b.t === "ul") return `<ul>${b.items.map((i) => `<li>${rich(i)}</li>`).join("")}</ul>`;
-    if (b.t === "table") return `<div class="scroll-x"><table class="ex-table"><thead><tr>${b.head.map((h) => `<th>${rich(h)}</th>`).join("")}</tr></thead><tbody>${b.rows.map((r) => `<tr>${r.map((c) => `<td>${rich(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+    if (b.t === "table") return `<div class="scroll-x"><table class="ex-table"><thead><tr>${b.head.map((h) => `<th>${rich(h)}</th>`).join("")}</tr></thead><tbody>${b.rows.map((r) => `<tr>${(Array.isArray(r) ? r : r.c || []).map((c) => `<td>${rich(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
     if (b.t === "img" && /^data:image\/(png|jpeg|webp|gif);base64,/.test(b.src || "")) return `<img class="ex-img" src="${b.src}" alt="${esc(b.alt || "")}" draggable="false">`;
     return "";
   }).join("");
@@ -1623,33 +1623,48 @@ async function renderTeacherAssess(view, rest = []) {
   }, () => {
   }));
 }
+function noNestedArrays(v) {
+  if (Array.isArray(v)) return v.map((x) => Array.isArray(x) ? { c: x.map(noNestedArrays) } : noNestedArrays(x));
+  if (v && typeof v === "object") {
+    const o = {};
+    for (const k in v) o[k] = k === "bands" && Array.isArray(v[k]) ? v[k].map((b) => Array.isArray(b) ? { m: b[0], t: b[1] } : b) : noNestedArrays(v[k]);
+    return o;
+  }
+  return v;
+}
 async function importFile(file) {
   if (!file) return;
   let j;
   try {
     j = JSON.parse(await file.text());
   } catch {
-    return toast("This is not a valid JSON file", "err");
+    return toast(`"${file.name}" is not a JSON test file. Choose DS12_F_2611_assessment.json.`, "err");
   }
   const A = j.assessment, K = j.markscheme;
   if (!A || A.format !== "ds-assessment/1" || !A.id || !/^[a-z0-9-]{3,60}$/.test(A.id) || !Array.isArray(A.sections)) return toast("This file is not a DS assessment", "err");
-  const old = await getDoc(ref("assessments", A.id));
-  if (old.exists() && !await askConfirm(`"${A.title}" already exists. Replace the questions and markscheme? Students' answers and marks are kept.`, "Replace")) return;
-  const { format, ...content } = A;
-  const b = writeBatch(db);
-  b.set(ref("assessments", A.id), {
-    ...content,
-    status: old.exists() ? old.data().status : "draft",
-    maxViolations: old.exists() ? old.data().maxViolations ?? 3 : 3,
-    createdAt: old.exists() ? old.data().createdAt : serverTimestamp(),
-    updatedAt: serverTimestamp()
-  });
-  if (K) {
-    const { format: f2, ...key } = K;
-    b.set(ref("assessmentKeys", A.id), { ...key, updatedAt: serverTimestamp() });
+  try {
+    const old = await getDoc(ref("assessments", A.id));
+    if (old.exists() && !await askConfirm(`"${A.title}" already exists. Replace the questions and markscheme? Students' answers and marks are kept.`, "Replace")) return;
+    const { format, ...content } = noNestedArrays(A);
+    const b = writeBatch(db);
+    b.set(ref("assessments", A.id), {
+      ...content,
+      status: old.exists() ? old.data().status : "draft",
+      maxViolations: old.exists() ? old.data().maxViolations ?? 3 : 3,
+      createdAt: old.exists() ? old.data().createdAt : serverTimestamp(),
+      updatedAt: serverTimestamp()
+    });
+    if (K) {
+      const { format: f2, ...key } = noNestedArrays(K);
+      b.set(ref("assessmentKeys", A.id), { ...key, updatedAt: serverTimestamp() });
+    }
+    await b.commit();
+    toast(`Imported: ${A.title}${K ? " (with markscheme)" : ""}`);
+  } catch (e) {
+    console.error(e);
+    const msg = e?.code === "permission-denied" ? "No permission to save the test. Publish the new firestore.rules in Firebase Console \u2192 Firestore \u2192 Rules, then try again." : "Import failed: " + (e?.message || e);
+    modal(`<h3>Import failed</h3><p>${esc(msg)}</p>`);
   }
-  await b.commit();
-  toast(`Imported: ${A.title}${K ? " (with markscheme)" : ""}`);
 }
 async function setStatus(A, status) {
   if (status === "open" && !await askConfirm(`Open "${A.title}" for ${(A.levels || []).join(" and ")} students now? They will see it on their Assessment tab.`, "Open")) return;
@@ -1885,7 +1900,7 @@ async function renderMarking(view, aid, sid) {
   const markedIds = /* @__PURE__ */ new Set();
   await getDocs(query(col("results"), where("aid", "==", aid))).then((x) => x.forEach((d) => markedIds.add(d.data().studentId))).catch(() => {
   });
-  const band = (b) => b?.length ? `<table class="tbl ex-bands"><thead><tr><th>Marks</th><th>Level descriptor</th></tr></thead><tbody>${b.map(([m, t]) => `<tr><td class="nowrap"><b>${esc(m)}</b></td><td>${esc(t)}</td></tr>`).join("")}</tbody></table>` : "";
+  const band = (b) => b?.length ? `<table class="tbl ex-bands"><thead><tr><th>Marks</th><th>Level descriptor</th></tr></thead><tbody>${b.map((x) => Array.isArray(x) ? { m: x[0], t: x[1] } : x).map(({ m, t }) => `<tr><td class="nowrap"><b>${esc(m)}</b></td><td>${esc(t)}</td></tr>`).join("")}</tbody></table>` : "";
   view.innerHTML = `
     <div class="page-head">
       <div><a class="muted small" href="#t-assess/${aid}">\u2190 Monitor</a><h2>\u270D\uFE0F ${esc(s.name)} <span class="badge ${s.level.toLowerCase()}">${s.level}</span></h2>
