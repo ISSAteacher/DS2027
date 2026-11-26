@@ -455,6 +455,108 @@ code.pin{font:700 1rem ui-monospace,monospace;letter-spacing:.15em;background:#f
 .rv-fig figcaption{font-size:.85rem;margin-top:.3em}
 .rcard{overflow:hidden}
 
+/* ===== Assessment (exam mode) ===== */
+.as-card{display:flex;justify-content:space-between;align-items:center;gap:1em;flex-wrap:wrap}
+.as-card h3{margin:.1em 0 .3em}
+.as-card .end-col{justify-content:flex-end;max-width:520px}
+.ex-start{max-width:820px;margin:0 auto}
+.ex-start ul{padding-left:1.2em}.ex-start li{margin:.35em 0}
+.ex-rules li{list-style:none;margin-left:-1.2em}
+.ex-agree{margin-top:1em;font-weight:600;gap:.6em}
+.note.warn{background:var(--bad-soft);color:#7f1d1d;margin-bottom:1em}
+body.exam-on{overflow:hidden}
+body.exam-on .top,body.exam-on #view{visibility:hidden}
+.exam{position:fixed;inset:0;z-index:150;background:var(--bg);display:flex;flex-direction:column;user-select:none;-webkit-user-select:none}
+.exam textarea{user-select:text;-webkit-user-select:text}
+.ex-top{display:flex;align-items:center;justify-content:space-between;gap:1em;padding:.55em 1em;background:#fff;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.ex-title{display:flex;align-items:center;gap:.7em;min-width:0}
+.ex-title b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:46vw}
+.ex-stat{display:flex;align-items:center;gap:.5em;flex-wrap:wrap}
+.ex-chip{font-size:.8rem;font-weight:700;padding:.3em .7em;border-radius:99px;background:#eef2f1;color:var(--muted)}
+.ex-chip.ok{background:var(--ok-soft);color:var(--ok)}.ex-chip.bad{background:var(--bad-soft);color:var(--bad)}
+.ex-viol.bad{background:var(--bad);color:#fff}
+.ex-timer{font:800 1.25rem/1 var(--font);font-variant-numeric:tabular-nums;padding:.35em .7em;border-radius:10px;background:var(--pri-soft);color:var(--pri)}
+.ex-timer.warn{background:var(--warn-soft);color:#92400e}.ex-timer.bad{background:var(--bad);color:#fff}
+.ex-stabs{display:flex;gap:.3em;padding:.4em 1em 0;background:#fff;border-bottom:1px solid var(--line)}
+.ex-stabs button{border:0;background:none;padding:.55em 1em;font:700 .9rem var(--font);color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px}
+.ex-stabs button.on{color:var(--pri);border-color:var(--pri)}
+.exam .ex-body{flex:1;overflow:hidden}
+.ex-sec{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;height:100%}
+.exam .ex-sec>div{overflow-y:auto;padding:1.2em 1.4em 3em}
+.ex-read{background:#fff;border-right:1px solid var(--line);line-height:1.65}
+.ex-read h3{margin-top:0}
+.ex-qs .ex-sech h3{margin:0}
+.ex-q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:.9em 1em;margin:.8em 0}
+.ex-qh{display:flex;gap:.6em;align-items:baseline;margin-bottom:.5em}
+.ex-qn{font-weight:800;white-space:nowrap;color:var(--pri)}
+.ex-qt{flex:1}
+.ex-m{font-weight:800;white-space:nowrap;color:var(--muted)}
+.ex-q textarea{min-height:3.2em;line-height:1.55}
+.ex-wc{font-size:.75rem;color:var(--muted);text-align:right;margin-top:.2em}
+.ex-srcbook h3{margin-top:0}
+.ex-srcnav{display:flex;gap:.4em;flex-wrap:wrap;position:sticky;top:-1.2em;background:#fff;padding:.5em 0;z-index:1}
+.ex-srcnav button{border:1px solid var(--line);background:#fff;border-radius:99px;padding:.3em .9em;font:700 .82rem var(--font);cursor:pointer}
+.ex-srcnav button:hover{border-color:var(--pri);color:var(--pri)}
+.ex-src{border-top:2px solid var(--ink);padding-top:.6em;margin-top:1.2em;scroll-margin-top:3em}
+.ex-src h4{margin:0 0 .2em;font-size:1.05rem}
+.ex-origin{font-style:italic;color:var(--muted);font-size:.9rem}
+.ex-table{border-collapse:collapse;margin:.6em 0;font-size:.9rem;width:100%}
+.ex-table th,.ex-table td{border:1px solid #cfd8d5;padding:.4em .6em;text-align:left}
+.ex-table th{background:#f3f6f5}
+.ex-table td:not(:first-child),.ex-table th:not(:first-child){text-align:center}
+.ex-img{max-width:100%;height:auto;display:block;margin:.5em 0;border:1px solid var(--line);border-radius:8px;background:#fff}
+.exam.covered .ex-body,.exam.covered .ex-stabs{filter:blur(14px);pointer-events:none}
+.ex-cover{position:absolute;inset:0;display:grid;place-items:center;background:rgba(10,25,22,.35);z-index:5;padding:1em}
+.ex-dlg{background:#fff;border-radius:16px;padding:1.6em 1.8em;max-width:480px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.ex-dlg .row.end{justify-content:center}
+.ex-warn-ic{font-size:2.6rem;line-height:1}
+.ex-big{font-size:1.2rem}
+.bad-t{color:var(--bad);font-weight:700}
+.ex-done{max-width:620px;margin:2em auto;text-align:center}
+.ex-review .ex-sec{min-height:0}
+.ex-review .ex-sec>div{padding:1em}
+.ex-review .ex-read{border:1px solid var(--line);border-radius:var(--r)}
+.ex-ans{white-space:pre-wrap;background:#f8faf9;border:1px solid var(--line);border-radius:10px;padding:.7em .9em;min-height:3em;line-height:1.55}
+.ex-ans.empty{color:var(--muted);font-style:italic}
+.ex-res{display:flex;gap:.8em;align-items:baseline;margin-top:.5em;padding:.5em .8em;border-radius:10px;background:var(--pri-soft)}
+.ex-res b{color:var(--pri);white-space:nowrap}
+.ex-total{font:800 2.4rem/1 var(--font);color:var(--pri)}.ex-total small{font-size:1rem;color:var(--muted)}
+@media(max-width:900px){
+  .ex-sec{grid-template-columns:1fr;height:auto}
+  .exam .ex-body{overflow-y:auto}
+  .exam .ex-sec>div{overflow:visible}
+  .ex-read{border-right:0;border-bottom:1px solid var(--line)}
+  .ex-title b{max-width:60vw}
+}
+/* teacher monitor + marking */
+.mini-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.7em;margin-bottom:1em}
+.mini-cards .mini-card{display:flex;flex-direction:column;background:#fff}
+.mini-cards .mini-card b{font-size:1.6rem;line-height:1.1}
+.mini-cards .mini-card span{color:var(--muted);font-size:.82rem}
+.mini-card.warn{background:var(--bad-soft);border-color:#f8caca}
+@media(max-width:700px){.mini-cards{grid-template-columns:repeat(2,1fr)}}
+.tbl.mon td{white-space:normal}
+.row-warn td{background:#fff7f7}
+.btn.viol{background:var(--bad);border-color:var(--bad);color:#fff}
+.ev-bad td{background:var(--bad-soft)}
+.dot{display:inline-block;width:.6em;height:.6em;border-radius:50%;background:#cbd5d1;margin-right:.35em}
+.dot.on{background:#16a34a;box-shadow:0 0 0 3px #dcfce7}
+.mk-grid{display:grid;grid-template-columns:1fr 1fr;gap:1em}
+.mk-key{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:.6em .9em;font-size:.9rem}
+.mk-key ul{padding-left:1.1em;margin:.3em 0}
+.ex-bands{font-size:.82rem;margin-top:.5em;background:#fff}
+.mk-row{display:flex;gap:.8em;align-items:center;margin-top:.8em;flex-wrap:wrap}
+.mk-row .mk-c{flex:1;min-width:220px}
+.mk-btns{display:flex;gap:.25em;flex-wrap:wrap}
+.mk-btns button{min-width:2.3em;height:2.3em;border:1px solid var(--line);background:#fff;border-radius:8px;font:700 .95rem var(--font);cursor:pointer}
+.mk-btns button.on{background:var(--pri);border-color:var(--pri);color:#fff}
+.mk-bar{position:sticky;bottom:.6em;display:flex;gap:1em;align-items:center;flex-wrap:wrap;border-color:var(--pri);z-index:5}
+.mk-bar textarea{flex:1;min-width:220px}
+.mk-total{font:800 1.6rem/1 var(--font);color:var(--pri);white-space:nowrap}
+@media(max-width:800px){.mk-grid{grid-template-columns:1fr}}
+@media print{.exam{display:none}}
+.ex-sec[hidden],.ex-cover[hidden]{display:none!important}
+
 </style>
 <script>
 (function () {
@@ -487,23 +589,18 @@ code.pin{font:700 1rem ui-monospace,monospace;letter-spacing:.15em;background:#f
 <script type="module">
 var __defProp = Object.defineProperty;
 var __getOwnPropNames = Object.getOwnPropertyNames;
-var __esm = (fn, res, err) => function __init() {
-  if (err) throw err[0];
-  try {
-    return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
-  } catch (e) {
-    throw err = [e], e;
-  }
+var __esm = (fn, res) => function __init() {
+  return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
 };
 var __export = (target, all) => {
   for (var name in all)
     __defProp(target, name, { get: all[name], enumerable: true });
 };
 
-// ../../home/claude/ds-portal/js/config.js
+// ../ds-portal/js/config.js
 var C, firebaseConfig, TEACHER_EMAILS, USE_STORAGE, AI_ENABLED, AI_MODEL, FIREBASE_VERSION, SCHOOL_NAME;
 var init_config = __esm({
-  "../../home/claude/ds-portal/js/config.js"() {
+  "../ds-portal/js/config.js"() {
     C = typeof window !== "undefined" && window.DS_CONFIG || {};
     firebaseConfig = C.firebaseConfig || {
       apiKey: "PASTE_API_KEY",
@@ -522,7 +619,7 @@ var init_config = __esm({
   }
 });
 
-// ../../home/claude/ds-portal/js/fb.js
+// ../ds-portal/js/fb.js
 async function uploadFile(path, file, onProgress) {
   if (!storage) throw new Error("Storage is turned off in the settings");
   const r = stMod.ref(storage, path);
@@ -545,9 +642,9 @@ async function removeFile(path) {
     console.warn(e);
   }
 }
-var base, appMod, authMod, fs, stMod, app, auth, db, storage, AI_BASE, doc, getDoc, setDoc, updateDoc, deleteDoc, addDoc, collection, query, where, orderBy, onSnapshot, getDocs, serverTimestamp, writeBatch, limit, deleteField, col, ref;
+var base, appMod, authMod, fs, stMod, app, auth, db, storage, AI_BASE, doc, getDoc, setDoc, updateDoc, deleteDoc, addDoc, collection, query, where, orderBy, onSnapshot, getDocs, serverTimestamp, writeBatch, limit, deleteField, increment, arrayUnion, col, ref;
 var init_fb = __esm({
-  async "../../home/claude/ds-portal/js/fb.js"() {
+  async "../ds-portal/js/fb.js"() {
     init_config();
     base = `https://www.gstatic.com/firebasejs/${FIREBASE_VERSION}`;
     appMod = await import(`${base}/firebase-app.js`);
@@ -557,6 +654,10 @@ var init_fb = __esm({
     app = appMod.initializeApp(firebaseConfig);
     auth = authMod.getAuth(app);
     db = fs.getFirestore(app);
+    if (typeof window !== "undefined" && window.DS_EMU) {
+      authMod.connectAuthEmulator(auth, window.DS_EMU.auth, { disableWarnings: true });
+      fs.connectFirestoreEmulator(db, window.DS_EMU.host, window.DS_EMU.port);
+    }
     storage = stMod ? stMod.getStorage(app) : null;
     AI_BASE = base;
     ({
@@ -575,14 +676,16 @@ var init_fb = __esm({
       serverTimestamp,
       writeBatch,
       limit,
-      deleteField
+      deleteField,
+      increment,
+      arrayUnion
     } = fs);
     col = (...p) => collection(db, ...p);
     ref = (...p) => doc(db, ...p);
   }
 });
 
-// ../../home/claude/ds-portal/js/ui.js
+// ../ds-portal/js/ui.js
 function esc(v) {
   return String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 }
@@ -679,13 +782,13 @@ function askText(msg, def = "", placeholder = "") {
 }
 var $, $$;
 var init_ui = __esm({
-  "../../home/claude/ds-portal/js/ui.js"() {
+  "../ds-portal/js/ui.js"() {
     $ = (s, el = document) => el.querySelector(s);
     $$ = (s, el = document) => [...el.querySelectorAll(s)];
   }
 });
 
-// ../../home/claude/ds-portal/js/data.js
+// ../ds-portal/js/data.js
 function unitsForLevel(level) {
   return UNITS.filter((u) => u.levels.includes(level));
 }
@@ -698,7 +801,7 @@ function findLesson(key) {
 }
 var CONCEPTS, CONTENT, CONTEXTS, HL_CHALLENGES, NEWS_THEMES, REV, HL, DEFAULT_TASKS, P3, UNITS, STATUSES, LEVELS_OF_ACHIEVEMENT;
 var init_data = __esm({
-  "../../home/claude/ds-portal/js/data.js"() {
+  "../ds-portal/js/data.js"() {
     CONCEPTS = [
       ["2.1", "Change"],
       ["2.2", "Expression"],
@@ -889,7 +992,1012 @@ var init_data = __esm({
   }
 });
 
-// ../../home/claude/ds-portal/js/student.js
+// ../ds-portal/js/assess.js
+var assess_exports = {};
+__export(assess_exports, {
+  checkActiveAttempt: () => checkActiveAttempt,
+  renderStudentAssess: () => renderStudentAssess,
+  renderTeacherAssess: () => renderTeacherAssess
+});
+function blocks(list = []) {
+  return list.map((b) => {
+    if (b.t === "p") return `<p>${rich(b.x)}</p>`;
+    if (b.t === "h") return `<h4>${rich(b.x)}</h4>`;
+    if (b.t === "ul") return `<ul>${b.items.map((i) => `<li>${rich(i)}</li>`).join("")}</ul>`;
+    if (b.t === "table") return `<div class="scroll-x"><table class="ex-table"><thead><tr>${b.head.map((h) => `<th>${rich(h)}</th>`).join("")}</tr></thead><tbody>${b.rows.map((r) => `<tr>${r.map((c) => `<td>${rich(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+    if (b.t === "img" && /^data:image\/(png|jpeg|webp|gif);base64,/.test(b.src || "")) return `<img class="ex-img" src="${b.src}" alt="${esc(b.alt || "")}" draggable="false">`;
+    return "";
+  }).join("");
+}
+function rowsFor(marks) {
+  return marks >= 8 ? 14 : marks >= 6 ? 11 : marks >= 4 ? 8 : marks >= 2 ? 4 : 2;
+}
+function paperHTML(A, { answers = {}, mode = "exam", result = null } = {}) {
+  const qHTML = (q) => {
+    const a = answers[q.id] || "";
+    let body;
+    if (mode === "exam") body = `<textarea data-q="${q.id}" rows="${rowsFor(q.marks)}" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Type your answer\u2026">${esc(a)}</textarea><div class="ex-wc"><span data-wc="${q.id}">${words(a)}</span> words</div>`;
+    else if (mode === "preview") body = `<div class="ex-ans empty">Answer box (${rowsFor(q.marks)} lines)</div>`;
+    else body = `<div class="ex-ans ${a.trim() ? "" : "empty"}">${a.trim() ? esc(a) : "No answer"}</div>`;
+    const mk = result ? `<div class="ex-res"><b>${result.marks?.[q.id] ?? "\u2013"} / ${q.marks}</b>${result.comments?.[q.id] ? `<span>${esc(result.comments[q.id])}</span>` : ""}</div>` : "";
+    return `<div class="ex-q" id="q-${q.id}"><div class="ex-qh"><span class="ex-qn">${esc(q.num)}</span><span class="ex-qt">${rich(q.text)}</span><span class="ex-m">[${q.marks}]</span></div>${body}${mk}</div>`;
+  };
+  const src = A.sources;
+  const srcHTML = src ? `
+    <div class="ex-srcbook"><h3>${esc(src.title || "Source booklet")}</h3>${src.intro ? `<p class="muted">${rich(src.intro)}</p>` : ""}
+      <div class="ex-srcnav">${src.items.map((s) => `<button type="button" data-jump="src-${s.id}">Source ${esc(s.id)}</button>`).join("")}</div>
+      ${src.items.map((s) => `<section class="ex-src" id="src-${s.id}"><h4>Source ${esc(s.id)}</h4><p class="ex-origin">${rich(s.origin || "")}</p>${blocks(s.blocks)}</section>`).join("")}
+    </div>` : "";
+  return (A.sections || []).map((s) => `
+    <section class="ex-sec" data-sec="${s.id}">
+      <div class="ex-read">${s.stimulus ? `<h3>${rich(s.stimulus.title || "")}</h3>${blocks(s.stimulus.blocks)}` : s.usesSources ? srcHTML : ""}</div>
+      <div class="ex-qs"><div class="ex-sech"><h3>${esc(s.title)}</h3><p class="muted">${rich(s.note || "")}</p></div>${(s.questions || []).map(qHTML).join("")}</div>
+    </section>`).join("");
+}
+function wirePaper(root) {
+  $$("[data-jump]", root).forEach((b) => b.onclick = () => $("#" + b.dataset.jump, root)?.scrollIntoView({ behavior: "smooth", block: "start" }));
+}
+function sectionTabs(A) {
+  return `<div class="ex-stabs">${(A.sections || []).map((s, i) => `<button type="button" data-s="${s.id}" class="${i ? "" : "on"}">${esc(s.title)}${s.usesSources ? " + sources" : ""}</button>`).join("")}</div>`;
+}
+function wireSectionTabs(root) {
+  const show = (id) => {
+    $$(".ex-stabs button", root).forEach((b) => b.classList.toggle("on", b.dataset.s === id));
+    $$(".ex-sec", root).forEach((s) => s.hidden = s.dataset.sec !== id);
+  };
+  $$(".ex-stabs button", root).forEach((b) => b.onclick = () => show(b.dataset.s));
+  const first = $(".ex-stabs button", root);
+  if (first) show(first.dataset.s);
+  return show;
+}
+async function renderStudentAssess(view, rest = []) {
+  const [aid, sub] = rest;
+  if (aid && sub === "result") return renderResult(view, aid);
+  if (aid) return renderStart(view, aid);
+  view.innerHTML = `
+    <div class="page-head"><div><h2>Assessment</h2><p class="muted">Formative tests are written here in exam mode: full screen, with a timer. Once you start, stay on the test page until you press <b>Submit</b>.</p></div></div>
+    <div id="asList"><div class="loading">Loading\u2026</div></div>`;
+  const sid = state.student.id;
+  let list = [];
+  try {
+    const snaps = await Promise.all(["open", "closed"].map((s) => getDocs(query(col("assessments"), where("status", "==", s)))));
+    list = snaps.flatMap((sn) => sn.docs).map((d) => ({ id: d.id, ...d.data() })).filter((a) => !a.levels || a.levels.includes(state.student.level));
+  } catch (e) {
+    console.error(e);
+  }
+  if (!list.length) {
+    $("#asList").innerHTML = `<div class="card muted">There are no assessments for you right now.</div>`;
+    return;
+  }
+  list.sort((a, b) => (a.status === "open" ? 0 : 1) - (b.status === "open" ? 0 : 1) || ms(b.openedAt) - ms(a.openedAt));
+  const cards = await Promise.all(list.map(async (A) => {
+    const at = await getDoc(ref("attempts", attemptId(sid, A.id))).then((d) => d.exists() ? d.data() : null).catch(() => null);
+    const res = await getDoc(ref("results", attemptId(sid, A.id))).then((d) => d.exists() ? d.data() : null).catch(() => null);
+    let st, btn = "";
+    if (res?.released) {
+      st = `<span class="pill green">Result: ${res.total ?? 0} / ${totalOf(A)}</span>`;
+      btn = `<a class="btn" href="#assess/${A.id}/result">View result</a>`;
+    } else if (at?.status === "submitted") st = `<span class="pill green">\u2713 Submitted ${dt(at.submittedAt)}</span><span class="muted small">Your teacher is marking it.</span>`;
+    else if (at?.status === "in_progress" && A.status === "open") {
+      st = `<span class="pill hl">In progress</span>`;
+      btn = `<a class="btn primary" href="#assess/${A.id}">Continue</a>`;
+    } else if (A.status === "open") {
+      st = `<span class="pill green">Open now</span>`;
+      btn = `<a class="btn primary" href="#assess/${A.id}">Start</a>`;
+    } else st = `<span class="pill">Closed</span>`;
+    return `<div class="card as-card"><div><div class="muted small">${esc(A.code || "")}</div><h3>${esc(A.title)}</h3>
+      <div class="row wrap small muted">\u23F1 ${A.minutes} min \xB7 ${totalOf(A)} marks \xB7 ${(A.levels || []).join(" / ")}</div>
+      <div class="row wrap" style="margin-top:.5em">${st}</div></div><div>${btn}</div></div>`;
+  }));
+  $("#asList").innerHTML = cards.join("");
+}
+async function checkActiveAttempt() {
+  if (state.role !== "student") return;
+  try {
+    const snap = await getDocs(query(col("attempts"), where("studentId", "==", state.student.id), where("status", "==", "in_progress")));
+    for (const d of snap.docs) {
+      const A = await getDoc(ref("assessments", d.data().aid)).then((x) => x.exists() ? x.data() : null).catch(() => null);
+      if (A && A.status === "open") {
+        const target = "#assess/" + d.data().aid;
+        clearUnsub();
+        state.examLock = { onNav: () => {
+          if (location.hash !== target) location.hash = target;
+          else renderStart($("#view"), d.data().aid);
+        } };
+        state.examLock.onNav();
+        return true;
+      }
+    }
+  } catch (e) {
+    console.warn(e);
+  }
+  return false;
+}
+async function renderStart(view, aid) {
+  const sid = state.student.id;
+  let A, at;
+  try {
+    const d = await getDoc(ref("assessments", aid));
+    if (!d.exists()) throw 0;
+    A = { id: d.id, ...d.data() };
+  } catch {
+    view.innerHTML = `<div class="card">This assessment is not available. <a href="#assess">Back</a></div>`;
+    return;
+  }
+  at = await getDoc(ref("attempts", attemptId(sid, aid))).then((d) => d.exists() ? d.data() : null).catch(() => null);
+  if (at?.status === "submitted") {
+    state.examLock = null;
+    location.hash = "assess";
+    return;
+  }
+  if (A.status !== "open") {
+    view.innerHTML = `<div class="card">This assessment is closed. <a href="#assess">Back</a></div>`;
+    return;
+  }
+  if (A.levels && !A.levels.includes(state.student.level)) {
+    view.innerHTML = `<div class="card">This assessment is not for your group.</div>`;
+    return;
+  }
+  const resume = at?.status === "in_progress";
+  const max = A.maxViolations ?? 3;
+  view.innerHTML = `
+    <div class="card ex-start">
+      <div class="muted small">${esc(A.code || "")}</div>
+      <h2>${esc(A.title)}</h2>
+      <p class="muted">${esc(A.subtitle || "")}</p>
+      ${resume ? `<div class="note warn"><b>Your test is still running.</b> The page was closed or reloaded \u2014 this has been recorded as an exit and your teacher can see it. The timer did not stop.</div>` : ""}
+      <h4>Instructions</h4>
+      <ul>${(A.instructions || []).map((i) => `<li>${rich(i)}</li>`).join("")}</ul>
+      <h4>Exam mode rules</h4>
+      <ul class="ex-rules">
+        <li>\u23F1 You have <b>${A.minutes} minutes</b>. The timer starts when you press Start and does not stop. When time is up, your answers are submitted automatically.</li>
+        <li>\u{1F5A5} The test opens in <b>full screen</b> and the rest of the site is locked until you press <b>Submit</b>.</li>
+        <li>\u{1F441} Leaving the test \u2014 switching to another tab or app, minimising, leaving full screen, closing or reloading the page \u2014 is <b>recorded and shown to your teacher live</b>.</li>
+        ${max > 0 ? `<li>\u26D4 After <b>${max}</b> exit${max > 1 ? "s" : ""} the test is <b>submitted automatically</b>.</li>` : ""}
+        <li>\u{1F6AB} Copy, paste and right-click are switched off.</li>
+        <li>\u{1F4BE} Answers are saved automatically every few seconds.</li>
+      </ul>
+      <label class="row ex-agree"><input type="checkbox" id="agree"> I have read the rules. I will stay on the test page until I submit.</label>
+      <div class="row end"><a class="btn" href="#assess" id="backBtn" ${resume ? "hidden" : ""}>Back</a><button class="btn primary" id="goBtn" disabled>${resume ? "Continue the test" : "Start the test"}</button></div>
+    </div>`;
+  $("#agree").onchange = (e) => $("#goBtn").disabled = !e.target.checked;
+  $("#goBtn").onclick = async () => {
+    const fs2 = document.documentElement.requestFullscreen ? document.documentElement.requestFullscreen({ navigationUI: "hide" }).catch(() => {
+    }) : null;
+    $("#goBtn").disabled = true;
+    try {
+      await startExam(A, at);
+    } catch (e) {
+      console.error(e);
+      if (document.fullscreenElement) document.exitFullscreen().catch(() => {
+      });
+      toast(e?.code === "permission-denied" ? "The test is not open for you. Ask your teacher." : "Could not start: " + (e.message || e), "err");
+      $("#goBtn").disabled = false;
+    }
+    await fs2;
+  };
+}
+async function startExam(A, prev) {
+  const sid = state.student.id;
+  const r = ref("attempts", attemptId(sid, A.id));
+  const t0 = Date.now();
+  if (!prev) {
+    await setDoc(r, {
+      studentId: sid,
+      aid: A.id,
+      status: "in_progress",
+      answers: {},
+      violations: 0,
+      events: [{ t: t0, type: "start", info: "Started the test", counted: false }],
+      startedAt: serverTimestamp(),
+      updatedAt: serverTimestamp(),
+      lastSeen: serverTimestamp()
+    });
+  } else {
+    await updateDoc(r, {
+      lastSeen: serverTimestamp(),
+      violations: increment(1),
+      events: arrayUnion({ t: t0, type: "reopened", info: "The test page was closed or reloaded, then opened again", counted: true })
+    });
+  }
+  const t1 = Date.now();
+  const snap = await getDoc(r);
+  const at = snap.data();
+  const skew = ms(at.lastSeen) - (t0 + t1) / 2;
+  runExam(A, at, r, skew);
+}
+function runExam(A, at, attemptRef, skew) {
+  const sid = state.student.id;
+  const lsKey = `ds-exam-${A.id}-${sid}`;
+  const L2 = {
+    A,
+    ref: attemptRef,
+    skew,
+    at,
+    max: A.maxViolations ?? 3,
+    answers: { ...at.answers || {} },
+    violations: at.violations || 0,
+    events: (at.events || []).length,
+    lastCount: 0,
+    dirty: false,
+    saveTimer: null,
+    blurTimer: null,
+    hiddenAt: null,
+    submitted: false,
+    offs: [],
+    tick: null,
+    beat: null,
+    unsubs: [],
+    fsOK: !!document.documentElement.requestFullscreen
+  };
+  try {
+    const bk = JSON.parse(localStorage.getItem(lsKey) || "null");
+    if (bk && bk.t > ms(at.updatedAt)) {
+      Object.assign(L2.answers, bk.answers);
+      L2.dirty = true;
+    }
+  } catch {
+  }
+  const target = "#assess/" + A.id;
+  clearUnsub();
+  state.examLock = { onNav: () => {
+    if (location.hash !== target) {
+      history.replaceState(null, "", target);
+      log("navigate", "Tried to open another page of the site", false);
+    }
+  } };
+  if (location.hash !== target) history.replaceState(null, "", target);
+  const qs = allQs(A);
+  const wrap = document.createElement("div");
+  wrap.id = "examLock";
+  wrap.className = "exam";
+  wrap.innerHTML = `
+    <header class="ex-top">
+      <div class="ex-title"><span class="logo sm">DS</span><div><b>${esc(A.title)}</b><div class="muted small">${esc(state.student.name)} \xB7 ${esc(A.code || "")}</div></div></div>
+      <div class="ex-stat">
+        <span class="ex-chip" id="exAns">Answered 0/${qs.length}</span>
+        <span class="ex-chip" id="exSave">Saved</span>
+        <span class="ex-chip ex-viol" id="exViol" title="Exits recorded">Exits 0${L2.max ? "/" + L2.max : ""}</span>
+        <span class="ex-timer" id="exTimer">--:--</span>
+        <button class="btn primary" id="exSubmit">Submit</button>
+      </div>
+    </header>
+    ${sectionTabs(A)}
+    <div class="ex-body">${paperHTML(A, { answers: L2.answers })}</div>
+    <div class="ex-cover" id="exCover" hidden><div class="ex-dlg" id="exDlg"></div></div>`;
+  document.body.appendChild(wrap);
+  document.body.classList.add("exam-on");
+  wireSectionTabs(wrap);
+  wirePaper(wrap);
+  const setSave = (txt, cls = "") => {
+    const e = $("#exSave");
+    if (e) {
+      e.textContent = txt;
+      e.className = "ex-chip " + cls;
+    }
+  };
+  const refreshCounts = () => {
+    $("#exAns").textContent = `Answered ${answered(L2.answers, A)}/${qs.length}`;
+    const v = $("#exViol");
+    v.textContent = `Exits ${L2.violations}${L2.max ? "/" + L2.max : ""}`;
+    v.classList.toggle("bad", L2.violations > 0);
+  };
+  async function save() {
+    if (!L2.dirty) return true;
+    L2.dirty = false;
+    const snapshot = { ...L2.answers };
+    setSave("Saving\u2026");
+    try {
+      await updateDoc(L2.ref, { answers: snapshot, updatedAt: serverTimestamp(), lastSeen: serverTimestamp() });
+      setSave("Saved " + (/* @__PURE__ */ new Date()).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" }), "ok");
+      return true;
+    } catch (e) {
+      console.warn(e);
+      L2.dirty = true;
+      setSave("Not saved \u2014 check internet", "bad");
+      clearTimeout(L2.saveTimer);
+      L2.saveTimer = setTimeout(save, 5e3);
+      return false;
+    }
+  }
+  const queueSave = () => {
+    L2.dirty = true;
+    setSave("Typing\u2026");
+    try {
+      localStorage.setItem(lsKey, JSON.stringify({ t: Date.now() + L2.skew, answers: L2.answers }));
+    } catch {
+    }
+    clearTimeout(L2.saveTimer);
+    L2.saveTimer = setTimeout(save, 1500);
+  };
+  $$("textarea[data-q]", wrap).forEach((ta2) => {
+    ta2.addEventListener("input", () => {
+      L2.answers[ta2.dataset.q] = ta2.value;
+      $(`[data-wc="${ta2.dataset.q}"]`, wrap).textContent = words(ta2.value);
+      refreshCounts();
+      queueSave();
+    });
+  });
+  function log(type, info, count = true) {
+    if (L2.submitted) return false;
+    const now = Date.now();
+    const counted = count && now - L2.lastCount > 4e3;
+    if (counted) L2.lastCount = now;
+    const upd = { lastSeen: serverTimestamp() };
+    if (L2.events < 280) {
+      upd.events = arrayUnion({ t: now + L2.skew, type, info, counted });
+      L2.events++;
+    }
+    if (counted) {
+      upd.violations = increment(1);
+      L2.violations++;
+    }
+    updateDoc(L2.ref, upd).catch((e) => console.warn(e));
+    refreshCounts();
+    if (counted && L2.max > 0 && L2.violations >= L2.max) submit("violations");
+    return counted;
+  }
+  const cover = (html) => {
+    $("#exDlg").innerHTML = html;
+    $("#exCover").hidden = false;
+    wrap.classList.add("covered");
+  };
+  const uncover = () => {
+    $("#exCover").hidden = true;
+    wrap.classList.remove("covered");
+  };
+  const backIn = () => {
+    if (L2.fsOK && !document.fullscreenElement) document.documentElement.requestFullscreen({ navigationUI: "hide" }).then(uncover).catch(() => uncover());
+    else uncover();
+  };
+  function warn() {
+    if (L2.submitted) return;
+    const left = L2.max ? L2.max - L2.violations : null;
+    cover(`<div class="ex-warn-ic">\u26A0\uFE0F</div><h3>You left the test</h3>
+      <p>This has been <b>recorded</b> and your teacher can see it.</p>
+      <p class="ex-big">Exits: <b>${L2.violations}</b>${L2.max ? ` of ${L2.max}` : ""}</p>
+      ${left !== null ? `<p>${left > 0 ? `After <b>${left}</b> more exit${left > 1 ? "s" : ""} your test will be submitted automatically.` : ""}</p>` : ""}
+      <button class="btn primary" id="exBack">Return to the test</button>`);
+    $("#exBack").onclick = backIn;
+  }
+  function needFS() {
+    if (L2.submitted) return;
+    cover(`<div class="ex-warn-ic">\u{1F5A5}</div><h3>Full screen is required</h3>
+      <p>The test is hidden until you return to full screen. Leaving full screen is recorded.</p>
+      <button class="btn primary" id="exBack">Return to full screen</button>`);
+    $("#exBack").onclick = backIn;
+  }
+  const on = (t, type, fn, opt) => {
+    t.addEventListener(type, fn, opt);
+    L2.offs.push(() => t.removeEventListener(type, fn, opt));
+  };
+  on(document, "visibilitychange", () => {
+    if (document.hidden) {
+      L2.hiddenAt = Date.now();
+      log("hidden", "Left the test page (switched tab or app, or minimised)");
+    } else if (L2.hiddenAt) {
+      log("returned", `Came back after ${Math.round((Date.now() - L2.hiddenAt) / 1e3)} s`, false);
+      L2.hiddenAt = null;
+      warn();
+    }
+  });
+  on(window, "blur", () => {
+    clearTimeout(L2.blurTimer);
+    L2.blurTimer = setTimeout(() => {
+      if (!document.hidden && !document.hasFocus() && !L2.submitted) {
+        log("blur", "The test window lost focus (another window or app was used)");
+        warn();
+      }
+    }, 1200);
+  });
+  on(window, "focus", () => clearTimeout(L2.blurTimer));
+  on(document, "fullscreenchange", () => {
+    if (L2.submitted) return;
+    if (!document.fullscreenElement) {
+      log("fullscreen", "Left full screen");
+      needFS();
+    }
+  });
+  on(window, "beforeunload", (e) => {
+    if (L2.submitted) return;
+    save();
+    log("unload", "Tried to close or reload the page", false);
+    e.preventDefault();
+    e.returnValue = "";
+  });
+  let lastCopy = 0;
+  const block = (type, info) => (e) => {
+    e.preventDefault();
+    if (Date.now() - lastCopy > 8e3) {
+      lastCopy = Date.now();
+      log(type, info, false);
+    }
+    toast(type === "paste" ? "Paste is switched off in exam mode" : "Copying is switched off in exam mode", "err");
+  };
+  on(wrap, "copy", block("copy", "Tried to copy"));
+  on(wrap, "cut", block("copy", "Tried to cut"));
+  on(wrap, "paste", block("paste", "Tried to paste"));
+  on(wrap, "drop", block("paste", "Tried to drop text"));
+  on(wrap, "contextmenu", (e) => e.preventDefault());
+  on(wrap, "dragstart", (e) => e.preventDefault());
+  on(document, "keydown", (e) => {
+    const k = (e.key || "").toLowerCase();
+    const mod = e.ctrlKey || e.metaKey;
+    if (e.key === "F12" || mod && e.shiftKey && ["i", "j", "c"].includes(k) || mod && ["p", "s", "u", "o"].includes(k)) {
+      e.preventDefault();
+      log("keys", `Blocked shortcut ${e.key}`, false);
+    }
+  }, true);
+  L2.unsubs.push(onSnapshot(L2.ref, (d) => {
+    if (!d.exists()) {
+      finish("reset");
+      return;
+    }
+    L2.at = d.data();
+    if (L2.at.violations > L2.violations) {
+      L2.violations = L2.at.violations;
+      refreshCounts();
+    }
+    if (L2.at.status === "submitted" && !L2.submitted) {
+      L2.submitted = true;
+      finish(L2.at.submitReason || "teacher");
+    }
+  }, () => {
+  }));
+  L2.unsubs.push(onSnapshot(ref("assessments", A.id), (d) => {
+    const s = d.exists() ? d.data().status : "closed";
+    if (s !== "open" && !L2.submitted) submit("closed");
+  }, () => {
+  }));
+  const tick = () => {
+    const left = (deadlineOf(A, L2.at) - (Date.now() + L2.skew)) / 1e3;
+    const el = $("#exTimer");
+    if (!el) return;
+    el.textContent = mmss(left);
+    el.classList.toggle("warn", left < 600);
+    el.classList.toggle("bad", left < 120);
+    if (left <= 0 && !L2.submitted) submit("time");
+  };
+  L2.tick = setInterval(tick, 1e3);
+  tick();
+  L2.beat = setInterval(() => {
+    if (L2.dirty) save();
+    else updateDoc(L2.ref, { lastSeen: serverTimestamp() }).catch(() => {
+    });
+  }, 3e4);
+  $("#exSubmit").onclick = () => {
+    const blank = qs.filter((q) => !(L2.answers[q.id] || "").trim());
+    cover(`<h3>Submit your test?</h3>
+      ${blank.length ? `<p class="bad-t">You have <b>${blank.length}</b> unanswered question${blank.length > 1 ? "s" : ""}: ${blank.map((q) => esc(q.num)).join(", ")}.</p>` : `<p>All questions have an answer.</p>`}
+      <p>After you submit you cannot change your answers.</p>
+      <div class="row end"><button class="btn" id="exNo">Back to the test</button><button class="btn primary" id="exYes">Submit</button></div>`);
+    $("#exNo").onclick = uncover;
+    $("#exYes").onclick = () => submit("manual");
+  };
+  async function submit(reason) {
+    if (L2.submitted) return;
+    L2.submitted = true;
+    cover(`<h3>Submitting\u2026</h3><p class="muted">Please wait, do not close the page.</p>`);
+    L2.dirty = true;
+    await save().catch(() => {
+    });
+    for (let i = 0; i < 6; i++) {
+      try {
+        await updateDoc(L2.ref, { status: "submitted", submittedAt: serverTimestamp(), submitReason: reason });
+        return finish(reason);
+      } catch (e) {
+        console.warn(e);
+        if (e?.code === "permission-denied") {
+          const d = await getDoc(L2.ref).catch(() => null);
+          if (!d || !d.exists() || d.data().status === "submitted") return finish(reason);
+        }
+        await new Promise((r) => setTimeout(r, 2500));
+      }
+    }
+    L2.submitted = false;
+    cover(`<h3>Could not submit</h3><p>Check your internet connection. Your answers are saved on this device.</p><button class="btn primary" id="exRetry">Try again</button>`);
+    $("#exRetry").onclick = () => submit(reason);
+  }
+  function finish(reason) {
+    L2.submitted = true;
+    clearInterval(L2.tick);
+    clearInterval(L2.beat);
+    clearTimeout(L2.saveTimer);
+    clearTimeout(L2.blurTimer);
+    L2.offs.forEach((f) => f());
+    L2.unsubs.forEach((u) => {
+      try {
+        u();
+      } catch {
+      }
+    });
+    try {
+      localStorage.removeItem(lsKey);
+    } catch {
+    }
+    if (document.fullscreenElement) document.exitFullscreen().catch(() => {
+    });
+    wrap.remove();
+    document.body.classList.remove("exam-on");
+    state.examLock = null;
+    const view = $("#view");
+    if (view) view.innerHTML = `<div class="card ex-done"><div class="ex-warn-ic">\u2705</div><h2>${reason === "reset" ? "Your attempt was reset by the teacher" : "Your test has been submitted"}</h2>
+      ${reason !== "reset" ? `<p class="muted">${reason === "manual" ? "" : "Submitted automatically: " + esc(REASON[reason] || reason) + "."}</p><p>Your teacher will mark it and release the result on the Assessment tab.</p>` : `<p>Ask your teacher what to do next.</p>`}
+      <a class="btn primary" href="#assess">Back to Assessment</a></div>`;
+    if (location.hash !== "#assess/" + A.id) history.replaceState(null, "", "#assess/" + A.id);
+  }
+  refreshCounts();
+  if (L2.dirty) save();
+  if (L2.max > 0 && L2.violations >= L2.max) {
+    submit("violations");
+    return;
+  }
+  if ((at.events || []).slice(-1)[0]?.type === "reopened") warn();
+  if (L2.fsOK) setTimeout(() => {
+    if (!document.fullscreenElement && !L2.submitted && $("#exCover").hidden) needFS();
+  }, 700);
+}
+async function renderResult(view, aid) {
+  const sid = state.student.id;
+  try {
+    const [A, at, res] = await Promise.all([
+      getDoc(ref("assessments", aid)).then((d) => d.data()),
+      getDoc(ref("attempts", attemptId(sid, aid))).then((d) => d.exists() ? d.data() : {}),
+      getDoc(ref("results", attemptId(sid, aid))).then((d) => d.data())
+    ]);
+    if (!A || !res) throw 0;
+    view.innerHTML = `
+      <div class="page-head"><div><a href="#assess" class="muted small">\u2190 Assessment</a><h2>${esc(A.title)}</h2><p class="muted">${esc(A.code || "")}</p></div>
+        <div class="ex-total">${res.total ?? 0}<small> / ${totalOf(A)}</small></div></div>
+      ${res.feedback ? `<div class="card accent"><h4 style="margin-top:0">Teacher feedback</h4><p>${rich(res.feedback)}</p></div>` : ""}
+      ${sectionTabs(A)}
+      <div class="ex-body ex-review">${paperHTML(A, { answers: at.answers || {}, mode: "result", result: res })}</div>`;
+    wireSectionTabs(view);
+    wirePaper(view);
+  } catch {
+    view.innerHTML = `<div class="card">The result is not available yet. <a href="#assess">Back</a></div>`;
+  }
+}
+async function renderTeacherAssess(view, rest = []) {
+  const [aid, sub, sid] = rest;
+  if (aid && sub === "mark") return renderMarking(view, aid, sid);
+  if (aid && sub === "preview") return renderPreview(view, aid);
+  if (aid) return renderMonitor(view, aid);
+  view.innerHTML = `
+    <div class="page-head">
+      <div><h2>Assessment</h2><p class="muted">Formatives in exam mode. Import a test, open it in class, watch it live, then mark and release results.</p></div>
+      <div class="actions"><label class="btn primary">\u2B06 Import test (.json)<input type="file" id="impFile" accept=".json,application/json" hidden></label></div>
+    </div>
+    <div id="tList"><div class="loading">Loading\u2026</div></div>
+    <div class="card muted small">
+      <b>How exam mode works.</b> A browser does not let any website stop a student from closing a tab or switching apps.
+      So the test runs in full screen with the rest of the site locked. Every exit (other tab or app, minimising, leaving full screen,
+      closing or reloading) is recorded and shown here live. The paper is covered until the student comes back. After the number of exits
+      you set, the test is submitted automatically. Copy, paste and right-click are off. For a full lock, use these settings together
+      with school-managed devices (e.g. Chromebook kiosk or Safe Exam Browser).
+    </div>`;
+  $("#impFile").onchange = (e) => importFile(e.target.files[0]).finally(() => e.target.value = "");
+  const draw = (list2, counts2) => {
+    if (!list2.length) {
+      $("#tList").innerHTML = `<div class="card muted">No tests yet. Import a test file (.json).</div>`;
+      return;
+    }
+    $("#tList").innerHTML = list2.map((A) => {
+      const c = counts2[A.id] || { w: 0, s: 0 };
+      const pill = A.status === "open" ? `<span class="pill green">\u25CF Open</span>` : A.status === "closed" ? `<span class="pill">Closed</span>` : `<span class="pill hl">Draft \u2014 hidden from students</span>`;
+      return `<div class="card as-card" data-id="${A.id}">
+        <div><div class="muted small">${esc(A.code || "")}</div><h3>${esc(A.title)}</h3>
+          <div class="row wrap small muted">\u23F1 ${A.minutes} min \xB7 ${totalOf(A)} marks \xB7 ${(A.levels || []).map((l) => `<span class="badge ${l.toLowerCase()}">${l}</span>`).join(" ")} \xB7 auto-submit after ${A.maxViolations ? A.maxViolations + " exits" : "\u2014 (off)"}</div>
+          <div class="row wrap" style="margin-top:.5em">${pill}<span class="muted small">Writing: ${c.w} \xB7 Submitted: ${c.s}</span></div></div>
+        <div class="row wrap end-col">
+          ${A.status !== "open" ? `<button class="btn primary sm" data-a="open">\u25B6 Open for students</button>` : `<button class="btn sm danger" data-a="close">\u25A0 Close & collect</button>`}
+          <a class="btn sm" href="#t-assess/${A.id}">\u{1F4E1} Monitor</a>
+          <a class="btn sm" href="#t-assess/${A.id}/mark">\u270D\uFE0F Mark</a>
+          <a class="btn sm" href="#t-assess/${A.id}/preview">\u{1F441} Preview</a>
+          <button class="btn sm" data-a="settings">\u2699</button>
+          ${A.status === "closed" ? `<button class="btn sm" data-a="draft">Hide</button>` : ""}
+          <button class="btn sm danger" data-a="del">\u{1F5D1}</button>
+        </div></div>`;
+    }).join("");
+    $$("#tList [data-a]").forEach((b) => b.onclick = () => {
+      const A = list2.find((x) => x.id === b.closest("[data-id]").dataset.id);
+      ({ open: () => setStatus(A, "open"), close: () => closeAndCollect(A), draft: () => setStatus(A, "draft"), settings: () => editSettings(A), del: () => delAssessment(A) })[b.dataset.a]();
+    });
+  };
+  let list = [], counts = {};
+  addUnsub(onSnapshot(col("assessments"), (snap) => {
+    list = snap.docs.map((d) => ({ id: d.id, ...d.data() })).sort((a, b) => ms(b.createdAt) - ms(a.createdAt));
+    draw(list, counts);
+  }, (e) => {
+    console.error(e);
+    $("#tList").innerHTML = `<div class="card err-card">No access to assessments. Publish the new firestore.rules in the Firebase Console.</div>`;
+  }));
+  addUnsub(onSnapshot(col("attempts"), (snap) => {
+    counts = {};
+    snap.forEach((d) => {
+      const x = d.data();
+      const c = counts[x.aid] ||= { w: 0, s: 0 };
+      x.status === "submitted" ? c.s++ : c.w++;
+    });
+    draw(list, counts);
+  }, () => {
+  }));
+}
+async function importFile(file) {
+  if (!file) return;
+  let j;
+  try {
+    j = JSON.parse(await file.text());
+  } catch {
+    return toast("This is not a valid JSON file", "err");
+  }
+  const A = j.assessment, K = j.markscheme;
+  if (!A || A.format !== "ds-assessment/1" || !A.id || !/^[a-z0-9-]{3,60}$/.test(A.id) || !Array.isArray(A.sections)) return toast("This file is not a DS assessment", "err");
+  const old = await getDoc(ref("assessments", A.id));
+  if (old.exists() && !await askConfirm(`"${A.title}" already exists. Replace the questions and markscheme? Students' answers and marks are kept.`, "Replace")) return;
+  const { format, ...content } = A;
+  const b = writeBatch(db);
+  b.set(ref("assessments", A.id), {
+    ...content,
+    status: old.exists() ? old.data().status : "draft",
+    maxViolations: old.exists() ? old.data().maxViolations ?? 3 : 3,
+    createdAt: old.exists() ? old.data().createdAt : serverTimestamp(),
+    updatedAt: serverTimestamp()
+  });
+  if (K) {
+    const { format: f2, ...key } = K;
+    b.set(ref("assessmentKeys", A.id), { ...key, updatedAt: serverTimestamp() });
+  }
+  await b.commit();
+  toast(`Imported: ${A.title}${K ? " (with markscheme)" : ""}`);
+}
+async function setStatus(A, status) {
+  if (status === "open" && !await askConfirm(`Open "${A.title}" for ${(A.levels || []).join(" and ")} students now? They will see it on their Assessment tab.`, "Open")) return;
+  await updateDoc(ref("assessments", A.id), { status, ...status === "open" ? { openedAt: serverTimestamp() } : {}, updatedAt: serverTimestamp() });
+  toast(status === "open" ? "Open \u2014 students can start" : status === "draft" ? "Hidden from students" : "Closed");
+}
+async function closeAndCollect(A) {
+  if (!await askConfirm(`Close "${A.title}"? Students who are still writing will be submitted with what they have saved.`, "Close & collect")) return;
+  await updateDoc(ref("assessments", A.id), { status: "closed", closedAt: serverTimestamp(), updatedAt: serverTimestamp() });
+  const snap = await getDocs(query(col("attempts"), where("aid", "==", A.id), where("status", "==", "in_progress")));
+  if (!snap.empty) {
+    const b = writeBatch(db);
+    snap.forEach((d) => b.update(d.ref, { status: "submitted", submittedAt: serverTimestamp(), submitReason: "closed" }));
+    await b.commit();
+  }
+  toast(`Closed. ${snap.size} attempt(s) collected.`);
+}
+function editSettings(A) {
+  const m = modal(`<h3>Settings</h3>
+    <label class="lbl">Title<input id="sTitle" value="${esc(A.title)}"></label>
+    <div class="grid2">
+      <label class="lbl">Time (minutes)<input id="sMin" type="number" min="5" max="300" value="${A.minutes}"></label>
+      <label class="lbl">Auto-submit after \u2026 exits (0 = off)<input id="sMax" type="number" min="0" max="20" value="${A.maxViolations ?? 3}"></label>
+    </div>
+    <div class="lbl">Groups</div>
+    <div class="row"><label class="row"><input type="checkbox" id="sSL" ${(A.levels || []).includes("SL") ? "checked" : ""}> SL</label><label class="row"><input type="checkbox" id="sHL" ${(A.levels || []).includes("HL") ? "checked" : ""}> HL</label></div>
+    <div class="row end"><button class="btn" data-c>Cancel</button><button class="btn primary" data-s>Save</button></div>`);
+  $("[data-c]", m.el).onclick = m.close;
+  $("[data-s]", m.el).onclick = async () => {
+    const levels = [["SL", "#sSL"], ["HL", "#sHL"]].filter(([, s]) => $(s, m.el).checked).map(([l]) => l);
+    if (!levels.length) return toast("Choose at least one group", "err");
+    await updateDoc(ref("assessments", A.id), {
+      title: $("#sTitle", m.el).value.trim() || A.title,
+      minutes: Math.max(5, Math.min(300, parseInt($("#sMin", m.el).value, 10) || A.minutes)),
+      maxViolations: Math.max(0, Math.min(20, parseInt($("#sMax", m.el).value, 10) || 0)),
+      levels,
+      updatedAt: serverTimestamp()
+    });
+    m.close();
+    toast("Saved");
+  };
+}
+async function delAssessment(A) {
+  if (!await askConfirm(`Delete "${A.title}" with all students' answers and marks? This cannot be undone.`, "Delete")) return;
+  const b = writeBatch(db);
+  const [at, rs] = await Promise.all([getDocs(query(col("attempts"), where("aid", "==", A.id))), getDocs(query(col("results"), where("aid", "==", A.id)))]);
+  at.forEach((d) => b.delete(d.ref));
+  rs.forEach((d) => b.delete(d.ref));
+  b.delete(ref("assessments", A.id));
+  b.delete(ref("assessmentKeys", A.id));
+  await b.commit();
+  toast("Deleted");
+}
+async function renderPreview(view, aid) {
+  const d = await getDoc(ref("assessments", aid));
+  if (!d.exists()) {
+    view.innerHTML = `<div class="card">Not found.</div>`;
+    return;
+  }
+  const A = d.data();
+  view.innerHTML = `<div class="page-head"><div><a class="muted small" href="#t-assess">\u2190 Assessment</a><h2>Preview: ${esc(A.title)}</h2><p class="muted">This is what students see (without exam mode).</p></div></div>
+    ${sectionTabs(A)}<div class="ex-body ex-review">${paperHTML(A, { mode: "preview" })}</div>`;
+  wireSectionTabs(view);
+  wirePaper(view);
+}
+function eventLog(name, at) {
+  const ev = (at.events || []).slice().sort((a, b) => a.t - b.t);
+  modal(`<h3>Exam log \u2014 ${esc(name)}</h3>
+    <p class="muted small">Exits counted: <b>${at.violations || 0}</b>. Started ${dt(at.startedAt)}${at.submittedAt ? ` \xB7 submitted ${dt(at.submittedAt)} (${esc(REASON[at.submitReason] || at.submitReason || "")})` : ""}.</p>
+    <div class="scroll-x"><table class="tbl"><thead><tr><th>Time</th><th>Event</th><th>Details</th><th>Counted</th></tr></thead><tbody>
+    ${ev.map((e) => `<tr class="${e.counted ? "ev-bad" : ""}"><td class="nowrap">${clock(e.t)}</td><td>${esc(EVENT_LABEL[e.type] || e.type)}</td><td>${esc(e.info || "")}</td><td>${e.counted ? "\u26A0 yes" : ""}</td></tr>`).join("") || `<tr><td colspan="4" class="muted">No events</td></tr>`}
+    </tbody></table></div>`, { wide: true });
+}
+async function renderMonitor(view, aid) {
+  view.innerHTML = `<div class="loading">Loading\u2026</div>`;
+  let A = null, students = [], attempts = {}, results = {};
+  const draw = () => {
+    if (!A) return;
+    const now = Date.now();
+    const list = students.filter((s) => !A.levels || A.levels.includes(s.level));
+    const rows = list.map((s) => {
+      const at = attempts[s.id];
+      let status = `<span class="pill">Not started</span>`, left = "", online = "", ans = "", viol = "";
+      if (at) {
+        const dl = deadlineOf(A, at);
+        const seen = ms(at.lastSeen);
+        if (at.status === "submitted") status = `<span class="pill green">\u2713 Submitted</span><div class="muted small">${dt(at.submittedAt)}${at.submitReason && at.submitReason !== "manual" ? " \xB7 " + esc(REASON[at.submitReason] || at.submitReason) : ""}</div>`;
+        else {
+          status = `<span class="pill hl">\u270E Writing</span>`;
+          left = dl - now > 0 ? mmss((dl - now) / 1e3) : `<span class="bad-t">time over</span>`;
+          online = now - seen < 75e3 ? `<span class="dot on"></span>online` : `<span class="dot"></span>${Math.round((now - seen) / 6e4)} min ago`;
+        }
+        ans = `${answered(at.answers, A)}/${allQs(A).length}`;
+        viol = `<button class="btn xs ${at.violations ? "viol" : ""}" data-a="log">${at.violations ? "\u26A0 " + at.violations : "0"}</button>`;
+      }
+      const r = results[s.id];
+      const mark = r ? `${r.total ?? 0}/${totalOf(A)}${r.released ? " \u2713" : ""}` : "";
+      return `<tr data-s="${s.id}" class="${at?.violations ? "row-warn" : ""}">
+        <td><b>${esc(s.name)}</b> <span class="badge ${s.level.toLowerCase()}">${s.level}</span></td>
+        <td>${status}</td><td class="nowrap">${online}</td><td class="nowrap">${left}</td><td>${ans}</td><td>${viol}</td><td>${mark}</td>
+        <td class="nowrap">${at && at.status !== "submitted" ? `<button class="btn xs" data-a="t5">+5 min</button> <button class="btn xs" data-a="sub">Submit now</button> ` : ""}
+          ${at ? `<a class="btn xs" href="#t-assess/${aid}/mark/${s.id}">Mark</a> <button class="btn xs danger" data-a="reset" title="Delete the attempt so the student can start again">Reset</button>` : ""}</td></tr>`;
+    });
+    const all = Object.values(attempts);
+    $("#mStats").innerHTML = `
+      <div class="mini-card"><b>${list.length - all.length}</b><span>not started</span></div>
+      <div class="mini-card"><b>${all.filter((a) => a.status !== "submitted").length}</b><span>writing</span></div>
+      <div class="mini-card"><b>${all.filter((a) => a.status === "submitted").length}</b><span>submitted</span></div>
+      <div class="mini-card ${all.some((a) => a.violations) ? "warn" : ""}"><b>${all.reduce((n, a) => n + (a.violations || 0), 0)}</b><span>exits recorded</span></div>`;
+    $("#mTbl").innerHTML = `<thead><tr><th>Student</th><th>Status</th><th>Online</th><th>Time left</th><th>Answered</th><th>Exits</th><th>Mark</th><th></th></tr></thead><tbody>${rows.join("")}</tbody>`;
+    $("#mHead").innerHTML = `<a class="muted small" href="#t-assess">\u2190 Assessment</a><h2>\u{1F4E1} ${esc(A.title)}</h2>
+      <p class="muted">${A.status === "open" ? `<span class="pill green">\u25CF Open</span>` : A.status === "closed" ? `<span class="pill">Closed</span>` : `<span class="pill hl">Draft</span>`} \xB7 ${A.minutes} min \xB7 auto-submit after ${A.maxViolations || "\u2014"} exits \xB7 updates live</p>`;
+    $("#mActs").innerHTML = `${A.status !== "open" ? `<button class="btn primary" data-g="open">\u25B6 Open</button>` : `<button class="btn danger" data-g="close">\u25A0 Close & collect</button>`}
+      <a class="btn" href="#t-assess/${aid}/mark">\u270D\uFE0F Mark</a><button class="btn" data-g="release">\u{1F4E3} Release marked results</button><button class="btn" data-g="csv">\u2B07 CSV</button>`;
+    $$("#mActs [data-g]").forEach((b) => b.onclick = () => ({ open: () => setStatus({ id: aid, ...A }, "open"), close: () => closeAndCollect({ id: aid, ...A }), release: releaseAll, csv: () => csv(A, students, attempts, results) })[b.dataset.g]());
+    $$("#mTbl [data-a]").forEach((b) => b.onclick = () => rowAction(b.dataset.a, b.closest("tr").dataset.s));
+  };
+  const rowAction = async (a, sid) => {
+    const s = students.find((x) => x.id === sid), at = attempts[sid], r = ref("attempts", attemptId(sid, aid));
+    if (a === "log") return eventLog(s.name, at);
+    if (a === "t5") {
+      await updateDoc(r, { extraMinutes: (at.extraMinutes || 0) + 5 });
+      return toast(`+5 minutes for ${s.name}`);
+    }
+    if (a === "sub") {
+      if (await askConfirm(`Submit ${s.name}'s test now with the saved answers?`, "Submit")) await updateDoc(r, { status: "submitted", submittedAt: serverTimestamp(), submitReason: "teacher" });
+      return;
+    }
+    if (a === "reset" && await askConfirm(`Delete ${s.name}'s attempt (answers, exits log and mark)? The student can then start again with a full timer.`, "Reset")) {
+      const b = writeBatch(db);
+      b.delete(r);
+      b.delete(ref("results", attemptId(sid, aid)));
+      await b.commit();
+      toast("Attempt reset");
+    }
+  };
+  const releaseAll = async () => {
+    const todo = Object.values(results).filter((r) => !r.released);
+    if (!todo.length) return toast("No marked results waiting to be released");
+    if (!await askConfirm(`Release ${todo.length} marked result(s) to students?`, "Release")) return;
+    const b = writeBatch(db);
+    todo.forEach((r) => b.update(ref("results", attemptId(r.studentId, aid)), { released: true }));
+    await b.commit();
+    toast("Released");
+  };
+  view.innerHTML = `<div class="page-head"><div id="mHead"></div><div class="actions" id="mActs"></div></div>
+    <div class="mini-cards" id="mStats"></div>
+    <div class="card p0 scroll-x"><table class="tbl mon" id="mTbl"></table></div>
+    <p class="muted small">\u201CExits\u201D counts every time a student left the test: another tab or app, minimising, leaving full screen, closing or reloading. Click the number to see the full log with times.</p>`;
+  addUnsub(onSnapshot(ref("assessments", aid), (d) => {
+    A = d.exists() ? d.data() : null;
+    if (!A) view.innerHTML = `<div class="card">Not found.</div>`;
+    else draw();
+  }));
+  addUnsub(onSnapshot(query(col("students"), orderBy("name")), (s) => {
+    students = s.docs.map((d) => ({ id: d.id, ...d.data() }));
+    draw();
+  }));
+  addUnsub(onSnapshot(query(col("attempts"), where("aid", "==", aid)), (s) => {
+    attempts = {};
+    s.forEach((d) => attempts[d.data().studentId] = d.data());
+    draw();
+  }));
+  addUnsub(onSnapshot(query(col("results"), where("aid", "==", aid)), (s) => {
+    results = {};
+    s.forEach((d) => results[d.data().studentId] = d.data());
+    draw();
+  }));
+  const iv = setInterval(() => {
+    if (!document.body.contains($("#mTbl"))) return clearInterval(iv);
+    draw();
+  }, 5e3);
+  addUnsub(() => clearInterval(iv));
+}
+function csv(A, students, attempts, results) {
+  const qs = allQs(A);
+  const head = ["Name", "Group", "Status", "Started", "Submitted", "How submitted", "Exits", ...qs.map((q) => `${q.num} [${q.marks}]`), `Total [${totalOf(A)}]`, "Released"];
+  const rows = students.filter((s) => !A.levels || A.levels.includes(s.level)).map((s) => {
+    const at = attempts[s.id] || {}, r = results[s.id] || {};
+    return [
+      s.name,
+      s.level,
+      at.status || "not started",
+      dt(at.startedAt),
+      at.submittedAt ? dt(at.submittedAt) : "",
+      REASON[at.submitReason] || "",
+      at.violations ?? "",
+      ...qs.map((q) => r.marks?.[q.id] ?? ""),
+      r.total ?? "",
+      r.released ? "yes" : ""
+    ];
+  });
+  const text = [head, ...rows].map((r) => r.map((c) => `"${String(c).replace(/"/g, '""')}"`).join(",")).join("\n");
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob(["\uFEFF" + text], { type: "text/csv" }));
+  a.download = `${A.code || A.title}.csv`.replace(/[^\w.\- –]+/g, "_");
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2e3);
+}
+async function renderMarking(view, aid, sid) {
+  view.innerHTML = `<div class="loading">Loading\u2026</div>`;
+  const [aD, kD, stS, atS] = await Promise.all([
+    getDoc(ref("assessments", aid)),
+    getDoc(ref("assessmentKeys", aid)).catch(() => null),
+    getDocs(query(col("students"), orderBy("name"))),
+    getDocs(query(col("attempts"), where("aid", "==", aid)))
+  ]);
+  if (!aD.exists()) {
+    view.innerHTML = `<div class="card">Not found.</div>`;
+    return;
+  }
+  const A = aD.data(), K = kD?.exists() ? kD.data() : { items: {} };
+  const qs = allQs(A);
+  const students = stS.docs.map((d) => ({ id: d.id, ...d.data() }));
+  const attempts = {};
+  atS.forEach((d) => attempts[d.data().studentId] = d.data());
+  const withAtt = students.filter((s2) => attempts[s2.id]);
+  if (!withAtt.length) {
+    view.innerHTML = `<div class="page-head"><div><a class="muted small" href="#t-assess/${aid}">\u2190 Monitor</a><h2>\u270D\uFE0F ${esc(A.title)}</h2></div></div><div class="card muted">No answers yet.</div>`;
+    return;
+  }
+  if (!sid || !attempts[sid]) {
+    location.replace(`#t-assess/${aid}/mark/${(withAtt.find((s2) => attempts[s2.id].status === "submitted") || withAtt[0]).id}`);
+    return;
+  }
+  const s = students.find((x) => x.id === sid), at = attempts[sid];
+  const rD = await getDoc(ref("results", attemptId(sid, aid)));
+  const R2 = rD.exists() ? rD.data() : { marks: {}, comments: {}, feedback: "", released: false };
+  R2.marks ||= {};
+  R2.comments ||= {};
+  const idx = withAtt.findIndex((x) => x.id === sid);
+  const prev = withAtt[idx - 1], next = withAtt[idx + 1];
+  const markedIds = /* @__PURE__ */ new Set();
+  await getDocs(query(col("results"), where("aid", "==", aid))).then((x) => x.forEach((d) => markedIds.add(d.data().studentId))).catch(() => {
+  });
+  const band = (b) => b?.length ? `<table class="tbl ex-bands"><thead><tr><th>Marks</th><th>Level descriptor</th></tr></thead><tbody>${b.map(([m, t]) => `<tr><td class="nowrap"><b>${esc(m)}</b></td><td>${esc(t)}</td></tr>`).join("")}</tbody></table>` : "";
+  view.innerHTML = `
+    <div class="page-head">
+      <div><a class="muted small" href="#t-assess/${aid}">\u2190 Monitor</a><h2>\u270D\uFE0F ${esc(s.name)} <span class="badge ${s.level.toLowerCase()}">${s.level}</span></h2>
+        <p class="muted">${esc(A.title)} \xB7 ${at.status === "submitted" ? `submitted ${dt(at.submittedAt)}${at.submitReason && at.submitReason !== "manual" ? " (" + esc(REASON[at.submitReason] || at.submitReason) + ")" : ""}` : "<b>still writing</b>"} \xB7
+        <button class="btn xs ${at.violations ? "viol" : ""}" id="mkLog">${at.violations ? "\u26A0 " + at.violations + " exits" : "0 exits"} \u2014 log</button></p></div>
+      <div class="actions">
+        <select id="mkPick">${withAtt.map((x) => `<option value="${x.id}" ${x.id === sid ? "selected" : ""}>${markedIds.has(x.id) ? "\u2713 " : ""}${esc(x.name)}</option>`).join("")}</select>
+        ${prev ? `<a class="btn" href="#t-assess/${aid}/mark/${prev.id}">\u2190</a>` : ""}${next ? `<a class="btn" href="#t-assess/${aid}/mark/${next.id}">\u2192</a>` : ""}
+      </div>
+    </div>
+    ${K.notes?.length ? `<details class="card small"><summary><b>Notes for markers</b></summary><ul>${K.notes.map((n) => `<li>${rich(n)}</li>`).join("")}</ul>${K.common?.length ? `<b>Common mistakes</b><ul>${K.common.map((n) => `<li>${rich(n)}</li>`).join("")}</ul>` : ""}</details>` : ""}
+    ${qs.map((q) => {
+    const a = at.answers?.[q.id] || "";
+    const k = K.items?.[q.id] || {};
+    return `<div class="card mk-q" data-q="${q.id}">
+        <div class="ex-qh"><span class="ex-qn">${esc(q.num)}</span><span class="ex-qt">${rich(q.text)}</span><span class="ex-m">[${q.marks}]</span></div>
+        <div class="mk-grid">
+          <div><h5>Student's answer \xB7 ${words(a)} words</h5><div class="ex-ans ${a.trim() ? "" : "empty"}">${a.trim() ? esc(a) : "No answer"}</div></div>
+          <div class="mk-key"><h5>Markscheme</h5>${blocks(k.guide) || `<p class="muted">No markscheme for this question.</p>`}${band(k.bands)}</div>
+        </div>
+        <div class="mk-row">
+          <div class="mk-btns">${Array.from({ length: q.marks + 1 }, (_, i) => `<button type="button" data-m="${i}" class="${R2.marks[q.id] === i ? "on" : ""}">${i}</button>`).join("")}</div>
+          <input class="mk-c" placeholder="Comment for the student (optional)" value="${esc(R2.comments[q.id] || "")}">
+        </div></div>`;
+  }).join("")}
+    <div class="card mk-bar">
+      <div class="mk-total"><span id="mkTotal">0</span> / ${totalOf(A)}</div>
+      <textarea id="mkFb" rows="2" placeholder="Overall feedback (what went well, what to improve)">${esc(R2.feedback || "")}</textarea>
+      <label class="row nowrap"><input type="checkbox" id="mkRel" ${R2.released ? "checked" : ""}> Show to student</label>
+      <span class="muted small" id="mkSt"></span>
+      <button class="btn primary" id="mkSave">Save${next ? " & next \u2192" : ""}</button>
+    </div>`;
+  $("#mkLog").onclick = () => eventLog(s.name, at);
+  $("#mkPick").onchange = (e) => location.hash = `t-assess/${aid}/mark/${e.target.value}`;
+  const total = () => qs.reduce((n, q) => n + (Number.isInteger(R2.marks[q.id]) ? R2.marks[q.id] : 0), 0);
+  const showTotal = () => $("#mkTotal").textContent = total();
+  let tm;
+  const persist = async (go) => {
+    clearTimeout(tm);
+    $$(".mk-q").forEach((c) => R2.comments[c.dataset.q] = $(".mk-c", c).value.trim());
+    const data = { studentId: sid, aid, marks: R2.marks, comments: R2.comments, feedback: $("#mkFb").value.trim(), total: total(), released: $("#mkRel").checked, updatedAt: serverTimestamp() };
+    try {
+      await setDoc(ref("results", attemptId(sid, aid)), data);
+      $("#mkSt").textContent = "Saved";
+      if (go && next) location.hash = `t-assess/${aid}/mark/${next.id}`;
+      else if (go) toast("Saved");
+    } catch (e) {
+      console.error(e);
+      $("#mkSt").textContent = "Not saved";
+      toast("Could not save", "err");
+    }
+  };
+  const later = () => {
+    $("#mkSt").textContent = "\u2026";
+    clearTimeout(tm);
+    tm = setTimeout(() => persist(false), 1200);
+  };
+  $$(".mk-q").forEach((c) => {
+    $$(".mk-btns button", c).forEach((b) => b.onclick = () => {
+      R2.marks[c.dataset.q] = +b.dataset.m;
+      $$(".mk-btns button", c).forEach((x) => x.classList.toggle("on", x === b));
+      showTotal();
+      later();
+    });
+    $(".mk-c", c).oninput = later;
+  });
+  $("#mkFb").oninput = later;
+  $("#mkRel").onchange = later;
+  $("#mkSave").onclick = () => persist(true);
+  addUnsub(() => clearTimeout(tm));
+  showTotal();
+}
+var attemptId, ms, rich, words, allQs, totalOf, clock, dt, mmss, answered, deadlineOf, EVENT_LABEL, REASON;
+var init_assess = __esm({
+  async "../ds-portal/js/assess.js"() {
+    await init_app();
+    await init_fb();
+    init_ui();
+    attemptId = (sid, aid) => `${sid}_${aid}`;
+    ms = (ts) => ts ? ts.toMillis ? ts.toMillis() : +new Date(ts) : 0;
+    rich = (x) => esc(x).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/\n/g, "<br>");
+    words = (t) => ((t || "").trim().match(/\S+/g) || []).length;
+    allQs = (A) => (A.sections || []).flatMap((s) => s.questions || []);
+    totalOf = (A) => A.totalMarks || allQs(A).reduce((n, q) => n + (q.marks || 0), 0);
+    clock = (t) => new Date(t).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+    dt = (ts) => ts ? new Date(ms(ts)).toLocaleString("en-GB", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" }) : "\u2014";
+    mmss = (s) => {
+      s = Math.max(0, Math.round(s));
+      const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60;
+      return (h ? h + ":" + String(m).padStart(2, "0") : m) + ":" + String(x).padStart(2, "0");
+    };
+    answered = (ans, A) => allQs(A).filter((q) => (ans?.[q.id] || "").trim()).length;
+    deadlineOf = (A, at) => ms(at.startedAt) + ((A.minutes || 80) + (at.extraMinutes || 0)) * 6e4;
+    EVENT_LABEL = {
+      hidden: "Left the page",
+      blur: "Window lost focus",
+      fullscreen: "Exited full screen",
+      reopened: "Closed / reloaded and reopened",
+      returned: "Came back",
+      paste: "Paste blocked",
+      copy: "Copy blocked",
+      keys: "Blocked shortcut",
+      navigate: "Tried to open another page",
+      unload: "Tried to close / reload",
+      start: "Started",
+      submit: "Submitted"
+    };
+    REASON = { manual: "by student", time: "time is up", violations: "too many exits", closed: "closed by teacher", teacher: "by teacher" };
+  }
+});
+
+// ../ds-portal/js/student.js
 var student_exports = {};
 __export(student_exports, {
   renderLessons: () => renderLessons
@@ -1007,7 +2115,7 @@ function lessonCard(l, p = {}, ans, unit) {
   </article>`;
 }
 var init_student = __esm({
-  async "../../home/claude/ds-portal/js/student.js"() {
+  async "../ds-portal/js/student.js"() {
     await init_app();
     await init_fb();
     init_data();
@@ -1015,10 +2123,10 @@ var init_student = __esm({
   }
 });
 
-// ../../home/claude/ds-portal/js/content/h.js
+// ../ds-portal/js/content/h.js
 var R, Q, M, S, T, X, E, W, CRIT5, CHECK4, CHECK8, CHECK12, OPVL, CHAIN, C2, RS, L;
 var init_h = __esm({
-  "../../home/claude/ds-portal/js/content/h.js"() {
+  "../ds-portal/js/content/h.js"() {
     R = (title, body, min) => ({ t: "read", title, body, min });
     Q = (id, title, qs, min) => ({ t: "mcq", id, title, min, qs: qs.map(([q, o, a, e]) => ({ q, o, a, e })) });
     M = (id, title, pairs, min) => ({ t: "match", id, title, pairs, min });
@@ -1078,10 +2186,10 @@ var init_h = __esm({
   }
 });
 
-// ../../home/claude/ds-portal/js/content/hl1.js
+// ../ds-portal/js/content/hl1.js
 var hl1_default;
 var init_hl1 = __esm({
-  "../../home/claude/ds-portal/js/content/hl1.js"() {
+  "../ds-portal/js/content/hl1.js"() {
     init_h();
     hl1_default = {
       "hl-1": {
@@ -1235,10 +2343,10 @@ var init_hl1 = __esm({
   }
 });
 
-// ../../home/claude/ds-portal/js/content/hl2.js
+// ../ds-portal/js/content/hl2.js
 var hl2_default;
 var init_hl2 = __esm({
-  "../../home/claude/ds-portal/js/content/hl2.js"() {
+  "../ds-portal/js/content/hl2.js"() {
     init_h();
     hl2_default = {
       "hl-8": {
@@ -1363,10 +2471,10 @@ var init_hl2 = __esm({
   }
 });
 
-// ../../home/claude/ds-portal/js/content/hl3.js
+// ../ds-portal/js/content/hl3.js
 var P3_SRC, hl3_default;
 var init_hl3 = __esm({
-  "../../home/claude/ds-portal/js/content/hl3.js"() {
+  "../ds-portal/js/content/hl3.js"() {
     init_h();
     P3_SRC = `<div class="source"><b>Source A \u2014 Pre-released context (summary)</b><p>Many democracies face falling turnout, especially among young people and citizens who live far from polling stations. Governments are testing two types of intervention: <b>I1 \u2014 making voting easier</b> (a two-week voting period through an official app, plus self-service voting kiosks in public buildings) and <b>I2 \u2014 making voting compulsory</b> (registration at least one month before the election, voting at an official voting centre, and fines for not voting).</p></div>
 <div class="source"><b>Source B \u2014 The Republic of Aralia (fictional case)</b><p>Aralia's Electoral Office piloted <i>VoteNow</i>, an app that lets citizens vote for 14 days using their national digital ID. 40 kiosks were placed in libraries and post offices. Turnout among 18\u201325-year-olds rose from 31% to 44% in pilot districts. However, 12% of kiosk users needed help from staff, and an opposition party claimed it could not independently verify the app's results.</p></div>
@@ -1488,10 +2596,10 @@ var init_hl3 = __esm({
   }
 });
 
-// ../../home/claude/ds-portal/js/content/rev1.js
+// ../ds-portal/js/content/rev1.js
 var CONCEPT_TERMS, rev1_default;
 var init_rev1 = __esm({
-  "../../home/claude/ds-portal/js/content/rev1.js"() {
+  "../ds-portal/js/content/rev1.js"() {
     init_h();
     CONCEPT_TERMS = [["Change", "How digital systems transform, and are transformed by, people and societies over time"], ["Expression", "How people convey ideas, emotions and creativity through digital media"], ["Identity", "How people define themselves and are defined by others, online and offline"], ["Power", "Who can influence, control or decide \u2014 and how technology shifts this"], ["Space", "How technology changes physical and virtual places, distance and access"], ["Systems", "Interconnected parts \u2014 people, technology, rules \u2014 that affect each other"], ["Values and ethics", "Beliefs about right and wrong that shape and judge technology"]];
     rev1_default = {
@@ -1612,10 +2720,10 @@ var init_rev1 = __esm({
   }
 });
 
-// ../../home/claude/ds-portal/js/content/rev2.js
+// ../ds-portal/js/content/rev2.js
 var P1, rev2_default;
 var init_rev2 = __esm({
-  "../../home/claude/ds-portal/js/content/rev2.js"() {
+  "../ds-portal/js/content/rev2.js"() {
     init_h();
     P1 = (id, title, stim, parts) => [
       R(title + ": stimulus", `<div class="source">${stim}</div>`, 3),
@@ -1848,10 +2956,10 @@ var init_rev2 = __esm({
   }
 });
 
-// ../../home/claude/ds-portal/js/content/rev3.js
+// ../ds-portal/js/content/rev3.js
 var SRC_SCREEN, SRC_AI, P2, rev3_default;
 var init_rev3 = __esm({
-  "../../home/claude/ds-portal/js/content/rev3.js"() {
+  "../ds-portal/js/content/rev3.js"() {
     init_h();
     init_rev2();
     SRC_SCREEN = `
@@ -2007,10 +3115,10 @@ var init_rev3 = __esm({
   }
 });
 
-// ../../home/claude/ds-portal/js/content/extra-hl.js
+// ../ds-portal/js/content/extra-hl.js
 var extra_hl_default;
 var init_extra_hl = __esm({
-  "../../home/claude/ds-portal/js/content/extra-hl.js"() {
+  "../ds-portal/js/content/extra-hl.js"() {
     init_h();
     extra_hl_default = {
       "hl-1": {
@@ -2279,10 +3387,10 @@ var init_extra_hl = __esm({
   }
 });
 
-// ../../home/claude/ds-portal/js/content/extra-rev.js
+// ../ds-portal/js/content/extra-rev.js
 var P1R, extra_rev_default;
 var init_extra_rev = __esm({
-  "../../home/claude/ds-portal/js/content/extra-rev.js"() {
+  "../ds-portal/js/content/extra-rev.js"() {
     init_h();
     P1R = (topic, s) => RS(`After the test: find one strong real-world example about ${topic} that would have improved your answer.`, ["What, who, where, when", "Which part (a\u2013d) it would improve", "One sentence you would add"], s, [L.bbc, L.reuters], 1, 12);
     extra_rev_default = {
@@ -2510,10 +3618,10 @@ var init_extra_rev = __esm({
   }
 });
 
-// ../../home/claude/ds-portal/js/content/p3data.js
+// ../ds-portal/js/content/p3data.js
 var PR, TERMS, EF, QSPEC, BOUNDS, MISTAKES, TOP, FRAMES;
 var init_p3data = __esm({
-  "../../home/claude/ds-portal/js/content/p3data.js"() {
+  "../ds-portal/js/content/p3data.js"() {
     PR = {
       title: "Political speech and activism",
       topic: "5.2B Participation and representation",
@@ -2616,10 +3724,10 @@ var init_p3data = __esm({
   }
 });
 
-// ../../home/claude/ds-portal/js/content/p3.js
+// ../ds-portal/js/content/p3.js
 var EFN, CHK3, CHK4, SRC_A, SRC_B, MODEL_A3, MODEL_A4, MODEL_B3, MODEL_B4, p3_default;
 var init_p3 = __esm({
-  "../../home/claude/ds-portal/js/content/p3.js"() {
+  "../ds-portal/js/content/p3.js"() {
     init_h();
     init_p3data();
     EFN = EF.map((e) => e[0]);
@@ -2934,10 +4042,10 @@ var init_p3 = __esm({
   }
 });
 
-// ../../home/claude/ds-portal/js/content/index.js
+// ../ds-portal/js/content/index.js
 var base2, extra, CONTENT2;
 var init_content = __esm({
-  "../../home/claude/ds-portal/js/content/index.js"() {
+  "../ds-portal/js/content/index.js"() {
     init_hl1();
     init_hl2();
     init_hl3();
@@ -2961,7 +4069,7 @@ var init_content = __esm({
   }
 });
 
-// ../../home/claude/ds-portal/js/lesson.js
+// ../ds-portal/js/lesson.js
 var lesson_exports = {};
 __export(lesson_exports, {
   UNITS: () => UNITS,
@@ -3333,7 +4441,7 @@ async function showStudentAnswers(modalEl, studentId, key) {
 }
 var TYPE_LABEL, interactive;
 var init_lesson = __esm({
-  async "../../home/claude/ds-portal/js/lesson.js"() {
+  async "../ds-portal/js/lesson.js"() {
     await init_app();
     await init_fb();
     init_data();
@@ -3356,7 +4464,7 @@ var init_lesson = __esm({
   }
 });
 
-// ../../home/claude/ds-portal/js/teacher.js
+// ../ds-portal/js/teacher.js
 var teacher_exports = {};
 __export(teacher_exports, {
   renderLessonSettings: () => renderLessonSettings,
@@ -3770,7 +4878,7 @@ function renderLessonSettings(view) {
 }
 var taskRow;
 var init_teacher = __esm({
-  async "../../home/claude/ds-portal/js/teacher.js"() {
+  async "../ds-portal/js/teacher.js"() {
     await init_app();
     await init_fb();
     init_data();
@@ -3780,7 +4888,7 @@ var init_teacher = __esm({
   }
 });
 
-// ../../home/claude/ds-portal/js/discuss.js
+// ../ds-portal/js/discuss.js
 var discuss_exports = {};
 __export(discuss_exports, {
   renderChat: () => renderChat,
@@ -3956,8 +5064,8 @@ async function renderChat(view, id) {
     const b = e.target.closest("[data-del]");
     if (!b || !await askConfirm("Delete this message?", "Delete")) return;
     const mref = ref("discussions", id, "messages", b.dataset.del);
-    const ms = await getDoc(mref);
-    if (ms.data()?.file?.path) await removeFile(ms.data().file.path);
+    const ms2 = await getDoc(mref);
+    if (ms2.data()?.file?.path) await removeFile(ms2.data().file.path);
     await deleteDoc(mref);
   };
   let pending = null;
@@ -4047,7 +5155,7 @@ function msgHtml(mid, m, me2) {
 }
 var MAX_FILE, isT;
 var init_discuss = __esm({
-  async "../../home/claude/ds-portal/js/discuss.js"() {
+  async "../ds-portal/js/discuss.js"() {
     await init_app();
     await init_fb();
     init_config();
@@ -4059,10 +5167,10 @@ var init_discuss = __esm({
   }
 });
 
-// ../../home/claude/ds-portal/js/content/p3exemplar.js
+// ../ds-portal/js/content/p3exemplar.js
 var EXEMPLAR_DATA;
 var init_p3exemplar = __esm({
-  "../../home/claude/ds-portal/js/content/p3exemplar.js"() {
+  "../ds-portal/js/content/p3exemplar.js"() {
     EXEMPLAR_DATA = {
       topic: "5.2B Participation and representation. Fewer and fewer people in the UK vote in elections. Can digital voting or compulsory voting fix this?",
       sources: [
@@ -4162,7 +5270,7 @@ var init_p3exemplar = __esm({
   }
 });
 
-// ../../home/claude/ds-portal/js/research.js
+// ../ds-portal/js/research.js
 var research_exports = {};
 __export(research_exports, {
   emptyResearch: () => emptyResearch,
@@ -4523,7 +5631,7 @@ async function renderResearchEditor(view, id) {
 }
 var EFN2, CLS, isT2, me, emptyIntervention, emptyResearch, imgSrc, imageBlock, firstLine, titleOf, P, srcRows, termRows, chips, ta, inp, srcEditor, termEditor, pick, getPath;
 var init_research = __esm({
-  async "../../home/claude/ds-portal/js/research.js"() {
+  async "../ds-portal/js/research.js"() {
     await init_app();
     await init_fb();
     init_data();
@@ -4585,7 +5693,7 @@ var init_research = __esm({
   }
 });
 
-// ../../home/claude/ds-portal/js/p3page.js
+// ../ds-portal/js/p3page.js
 var p3page_exports = {};
 __export(p3page_exports, {
   renderP3: () => renderP3
@@ -4685,7 +5793,7 @@ function renderP3(view, arg) {
   draw();
 }
 var init_p3page = __esm({
-  async "../../home/claude/ds-portal/js/p3page.js"() {
+  async "../ds-portal/js/p3page.js"() {
     await init_app();
     await init_fb();
     init_data();
@@ -4694,7 +5802,7 @@ var init_p3page = __esm({
   }
 });
 
-// ../../home/claude/ds-portal/js/news.js
+// ../ds-portal/js/news.js
 var news_exports = {};
 __export(news_exports, {
   classify: () => classify,
@@ -5004,7 +6112,7 @@ function editPost(existing) {
 }
 var isT3, themeOf, lbl, aiModel;
 var init_news = __esm({
-  async "../../home/claude/ds-portal/js/news.js"() {
+  async "../ds-portal/js/news.js"() {
     await init_app();
     await init_fb();
     init_config();
@@ -5018,7 +6126,7 @@ var init_news = __esm({
   }
 });
 
-// ../../home/claude/ds-portal/js/ea.js
+// ../ds-portal/js/ea.js
 var ea_exports = {};
 __export(ea_exports, {
   renderEA: () => renderEA
@@ -5043,7 +6151,7 @@ function renderEA(view) {
 }
 var TABS, SEC;
 var init_ea = __esm({
-  async "../../home/claude/ds-portal/js/ea.js"() {
+  async "../ds-portal/js/ea.js"() {
     await init_app();
     init_ui();
     TABS = [
@@ -5248,7 +6356,7 @@ var init_ea = __esm({
   }
 });
 
-// ../../home/claude/ds-portal/js/app.js
+// ../ds-portal/js/app.js
 function addUnsub(fn) {
   state.unsub.push(fn);
 }
@@ -5375,6 +6483,7 @@ async function logout() {
   }
   state.role = null;
   state.student = null;
+  state.examLock = null;
   await authMod.signOut(auth);
   location.hash = "";
 }
@@ -5393,12 +6502,19 @@ function renderShell() {
   $("#logout").onclick = logout;
   $(".burger").onclick = () => $(".tabs").classList.toggle("open");
   if (!location.hash || location.hash === "#") location.hash = nav[0][0];
-  route();
+  if (state.role === "student") init_assess().then(() => assess_exports).then((m) => m.checkActiveAttempt()).catch(() => false).then((locked) => {
+    if (!locked) route();
+  });
+  else route();
 }
 async function route() {
   if (!state.role) return;
   clearUnsub();
-  const [r, arg] = location.hash.slice(1).split("/");
+  if (state.examLock) {
+    state.examLock.onNav?.();
+    return;
+  }
+  const [r, arg, ...more] = location.hash.slice(1).split("/");
   const alias = { discussion: "discussions", research: "p3", lesson: (arg || "").startsWith("p3") ? "p3" : state.role === "teacher" ? "t-lessons" : "lessons" };
   $$(".tabs a").forEach((a) => a.classList.toggle("on", a.dataset.r === r || alias[r] === a.dataset.r));
   $(".tabs")?.classList.remove("open");
@@ -5407,6 +6523,8 @@ async function route() {
   try {
     const T2 = state.role === "teacher";
     if (r === "lessons" && !T2) (await init_student().then(() => student_exports)).renderLessons(view);
+    else if (r === "assess" && !T2) (await init_assess().then(() => assess_exports)).renderStudentAssess(view, [arg, ...more].filter(Boolean));
+    else if (r === "t-assess" && T2) (await init_assess().then(() => assess_exports)).renderTeacherAssess(view, [arg, ...more].filter(Boolean));
     else if (r === "lesson") (await init_lesson().then(() => lesson_exports)).renderLessonPage(view, arg);
     else if (r === "discussions") (await init_discuss().then(() => discuss_exports)).renderList(view);
     else if (r === "discussion") (await init_discuss().then(() => discuss_exports)).renderChat(view, arg);
@@ -5425,7 +6543,7 @@ async function route() {
 }
 var state, isTeacherUser, NAV_STUDENT, NAV_TEACHER;
 var init_app = __esm({
-  async "../../home/claude/ds-portal/js/app.js"() {
+  async "../ds-portal/js/app.js"() {
     init_config();
     await init_fb();
     init_ui();
@@ -5443,6 +6561,7 @@ var init_app = __esm({
     isTeacherUser = (u) => u && !u.isAnonymous && TEACHER_EMAILS.map((e) => e.toLowerCase()).includes((u.email || "").toLowerCase());
     NAV_STUDENT = [
       ["lessons", "\u{1F4DA}", "My lessons"],
+      ["assess", "\u{1F4DD}", "Assessment"],
       ["discussions", "\u{1F4AC}", "Discussions"],
       ["p3", "\u{1F3AF}", "Paper 3 \xB7 2027"],
       ["news", "\u{1F4F0}", "News"],
@@ -5450,6 +6569,7 @@ var init_app = __esm({
     ];
     NAV_TEACHER = [
       ["t-progress", "\u2705", "Progress"],
+      ["t-assess", "\u{1F4DD}", "Assessment"],
       ["t-students", "\u{1F465}", "Students"],
       ["t-lessons", "\u{1F5C2}\uFE0F", "Lessons"],
       ["p3", "\u{1F3AF}", "Paper 3"],
@@ -5480,6 +6600,7 @@ await init_app();
 export {
   UNITS,
   addUnsub,
+  clearUnsub,
   lessonTasks,
   loadLessonMeta,
   logout,
